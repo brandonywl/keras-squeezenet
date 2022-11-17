@@ -1,11 +1,13 @@
-from keras_applications.imagenet_utils import _obtain_input_shape
+from keras.applications.imagenet_utils import obtain_input_shape
 from keras import backend as K
-from keras.layers import Input, Convolution2D, MaxPooling2D, Activation, concatenate, Dropout, warnings
+from keras.layers import Input, Convolution2D, MaxPooling2D, Activation, concatenate, Dropout
 from keras.layers import GlobalAveragePooling2D, GlobalMaxPooling2D
 from keras.models import Model
-from keras.engine.topology import get_source_inputs
-from keras.utils import get_file
-from keras.utils import layer_utils
+from keras.utils import get_file, layer_utils
+
+from keras.utils.layer_utils import get_source_inputs
+
+import tensorflow as tf
 
 
 sq1x1 = "squeeze1x1"
@@ -58,7 +60,7 @@ def SqueezeNet(include_top=True, weights='imagenet',
                          ' as true, `classes` should be 1000')
 
 
-    input_shape = _obtain_input_shape(input_shape,
+    input_shape = obtain_input_shape(input_shape,
                                       default_size=227,
                                       min_size=48,
                                       data_format=K.image_data_format(),
@@ -137,7 +139,7 @@ def SqueezeNet(include_top=True, weights='imagenet',
         if K.image_data_format() == 'channels_first':
 
             if K.backend() == 'tensorflow':
-                warnings.warn('You are using the TensorFlow backend, yet you '
+                tf.get_logger().warning('You are using the TensorFlow backend, yet you '
                               'are using the Theano '
                               'image data format convention '
                               '(`image_data_format="channels_first"`). '
