@@ -4,6 +4,9 @@ SqueezeNet v1.1 Implementation using Keras Functional Framework 2.0
 This [network model](https://github.com/rcmalli/keras-squeezenet/blob/master/images/SqueezeNet.png) has AlexNet accuracy with small footprint (5.1 MB)
 Pretrained models are converted from original Caffe network.
 
+__NOTE:__ This is a fork made adapted for me to use with the current version of Tensorflow and Keras on Google Colab (2.92 and 2.9 respectively). This does not work without the standalone Keras as the Tensorflow implementation of Keras does not have obtain_input_shape available. Future work can be done to decouple this.
+
+
 
 
 ~~~bash
