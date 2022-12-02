@@ -62,7 +62,7 @@ def SqueezeNet(include_top=True, weights='imagenet',
 
     input_shape = obtain_input_shape(input_shape,
                                       default_size=227,
-                                      min_size=48,
+                                      min_size=32,
                                       data_format=K.image_data_format(),
                                       require_flatten=include_top)
 
